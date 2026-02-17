@@ -1,0 +1,315 @@
+/* ===== Nav Island ===== */
+.navIsland {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 8px 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 1000;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+}
+
+.navItem {
+  padding: 8px 16px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navItem:hover,
+.navItemActive {
+  color: var(--text-primary);
+  background: var(--bg-void);
+}
+
+.navItemAccent {
+  color: var(--accent-glow) !important;
+}
+
+/* ===== Hero ===== */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.heroLightLeak {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(243, 244, 246, 0) 70%);
+  filter: blur(80px);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroContent {
+  z-index: 1;
+  text-align: center;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent-glow);
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-card);
+}
+
+.heroBadgeDot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-glow);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.heroTitle {
+  font-size: clamp(3rem, 6vw, 5rem);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+}
+
+.heroSubtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.heroCtaGroup {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.heroContactRow {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 24px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.heroContactRow a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.heroContactRow a:hover {
+  color: var(--accent-glow);
+}
+
+/* ===== About / Summary Grid ===== */
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.bioLead {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.statCard {
+  background: var(--bg-surface);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--accent-glow);
+  box-shadow: var(--shadow-card);
+}
+
+.statNumber {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* ===== Stack / Skills Grid ===== */
+.stackGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.stackCard {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stackIcon {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-dim);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-glow);
+  margin-bottom: 8px;
+}
+
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+
+/* ===== Experience Timeline ===== */
+.timelineCompany {
+  font-size: 0.9rem;
+  color: var(--accent-glow);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* ===== Education / Certifications ===== */
+.educationCard {
+  padding: 24px;
+}
+
+.certBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-card);
+}
+
+.certBadge:hover {
+  border-color: var(--accent-glow);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-float);
+}
+
+/* ===== Awards ===== */
+.awardCard {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border: 1px solid #FDE68A;
+}
+
+.awardIcon {
+  font-size: 2rem;
+}
+
+/* ===== Blog List ===== */
+.blogList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.blogItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  cursor: pointer;
+}
+
+.blogMeta {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+/* ===== Contact Form ===== */
+.contactCard {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 48px;
+}
+
+.inputGroup {
+  margin-bottom: 24px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+
+  .aboutGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .navIsland {
+    width: 90%;
+    justify-content: space-around;
+    padding: 6px 8px;
+    gap: 4px;
+  }
+
+  .navItem {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  .heroCtaGroup {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stackGrid {
+    grid-template-columns: 1fr;
+  }
+}
