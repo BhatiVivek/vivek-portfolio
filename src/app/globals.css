@@ -152,6 +152,8 @@ a {
 .btn-secondary:hover {
   background: var(--bg-surface-hover);
   border-color: var(--border-highlight);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-float);
 }
 
 .btn-accent {

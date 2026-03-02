@@ -153,7 +153,7 @@
 
 @keyframes profileFloat {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-30px); }
 }
 
 .heroBadge {
@@ -196,10 +196,36 @@
 
 .heroCtaGroup {
   display: flex;
-  gap: 16px;
+  gap: 12px;
+  align-items: center;
   justify-content: flex-start;
   margin-top: 40px;
   flex-wrap: wrap;
+}
+
+.heroSocialRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.socialIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+  border-color: var(--accent-glow);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-float);
 }
 
 .heroContactRow {
@@ -387,6 +413,10 @@
   }
 
   .heroCtaGroup {
+    justify-content: center;
+  }
+
+  .heroSocialRow {
     justify-content: center;
   }
 
