@@ -1,0 +1,92 @@
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  height: 38px;
+  background: rgba(10, 8, 28, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 11px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+  border-radius: 5px;
+  transition: color 0.15s, background 0.15s;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.link:hover {
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.active {
+  color: rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* "AI" badge next to News */
+.badge {
+  display: inline-block;
+  padding: 1px 5px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #a78bfa;
+  background: rgba(167, 139, 250, 0.15);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 3px;
+  line-height: 1.4;
+}
+
+.adminLink {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 2px 10px;
+}
+
+.adminLink:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.adminLink.active {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Mobile: collapse labels, keep icons */
+@media (max-width: 480px) {
+  .inner {
+    padding: 0 12px;
+  }
+  .link {
+    padding: 3px 8px;
+    font-size: 0.7rem;
+  }
+}

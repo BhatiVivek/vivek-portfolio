@@ -9,7 +9,6 @@ import ExperienceSection from '../components/home/ExperienceSection';
 import EducationSection from '../components/home/EducationSection';
 import CertificationsSection from '../components/home/CertificationsSection';
 import AwardsSection from '../components/home/AwardsSection';
-import ContentSection from '../components/home/ContentSection';
 import NavIsland from '../components/home/NavIsland';
 import ContactSection from '../components/home/ContactSection';
 
@@ -186,9 +185,6 @@ export default function Home() {
 
       {/* Technical Arsenal - Skills Grid */}
       <SkillsGrid skillsData={skillsData} />
-
-      {/* My Content - Blog & Videos */}
-      <ContentSection />
 
       {/* Experience Timeline */}
       <ExperienceSection experienceData={experienceData} />
