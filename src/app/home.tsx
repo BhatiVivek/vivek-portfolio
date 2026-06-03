@@ -30,6 +30,7 @@ const skillsData: Record<string, string[]> = {
 const experienceData = [
   {
     company: 'LTIMindtree',
+    client: 'Lord Abbett',
     positions: [
       {
         title: 'Specialist Software Engineering',
@@ -53,6 +54,7 @@ const experienceData = [
   },
   {
     company: 'emids',
+    client: 'Medidata',
     duration: '2 years 11 months',
     positions: [
       {
@@ -73,6 +75,7 @@ const experienceData = [
   },
   {
     company: 'HealthAsyst',
+    client: 'Allscripts',
     positions: [
       {
         title: 'Software Developer',
@@ -84,6 +87,7 @@ const experienceData = [
   },
   {
     company: 'SLK Software',
+    client: '5/3 Bank',
     positions: [
       {
         title: 'Software Engineer',

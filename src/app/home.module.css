@@ -388,12 +388,19 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
-  border: 1px solid #FDE68A;
+  border-left: 4px solid var(--accent-glow);
 }
 
 .awardIcon {
-  font-size: 2rem;
+  width: 44px;
+  height: 44px;
+  background: var(--accent-dim);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--accent-glow);
 }
 
 /* ===== Blog List ===== */
