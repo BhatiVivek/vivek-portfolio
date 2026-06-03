@@ -60,14 +60,14 @@ const experienceData = [
         period: 'July 2019 - May 2021',
         location: 'Bangalore Urban, Karnataka, India',
         description: 'Front End Developer, work on React and Redux with TDD and BDD process by using Cucumber JS, Mocha, Chai, Wiremocks, Cypress.',
-        skills: ['React', 'Redux', 'TDD', 'BDD', 'Cucumber JS', 'Mocha', 'Chai', 'Cypress']
+        skills: ['React', 'Redux', 'Node.js', 'TDD', 'BDD', 'Cucumber JS', 'Mocha', 'Chai', 'Cypress']
       },
       {
         title: 'Software Engineer',
         period: 'July 2018 - July 2019',
         location: 'Bangalore',
         description: 'Front End Developer, work on React and Redux with TDD and BDD process.',
-        skills: ['React', 'Redux', 'TDD', 'BDD']
+        skills: ['React', 'Redux', 'Node.js', 'TDD', 'BDD']
       }
     ]
   },
@@ -116,13 +116,16 @@ const certificationsData = [
 ];
 
 const awardsData = [
-  'Star Team Award'
+  'Star Team Award',
+  'Employee of the Month Award',
 ];
 
 const topSkills = [
   'ReactJS',
+  'Next JS',
   'TypeScript',
-  'Node.js'
+  'Node.js',
+  'AEM Basics',
 ];
 
 export default function Home() {
