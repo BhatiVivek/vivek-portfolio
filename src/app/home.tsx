@@ -30,6 +30,7 @@ const skillsData: Record<string, string[]> = {
 const experienceData = [
   {
     company: 'LTIMindtree',
+    client: 'Lord Abbett',
     positions: [
       {
         title: 'Specialist Software Engineering',
@@ -53,6 +54,7 @@ const experienceData = [
   },
   {
     company: 'emids',
+    client: 'Medidata',
     duration: '2 years 11 months',
     positions: [
       {
@@ -60,19 +62,20 @@ const experienceData = [
         period: 'July 2019 - May 2021',
         location: 'Bangalore Urban, Karnataka, India',
         description: 'Front End Developer, work on React and Redux with TDD and BDD process by using Cucumber JS, Mocha, Chai, Wiremocks, Cypress.',
-        skills: ['React', 'Redux', 'TDD', 'BDD', 'Cucumber JS', 'Mocha', 'Chai', 'Cypress']
+        skills: ['React', 'Redux', 'Node.js', 'TDD', 'BDD', 'Cucumber JS', 'Mocha', 'Chai', 'Cypress']
       },
       {
         title: 'Software Engineer',
         period: 'July 2018 - July 2019',
         location: 'Bangalore',
         description: 'Front End Developer, work on React and Redux with TDD and BDD process.',
-        skills: ['React', 'Redux', 'TDD', 'BDD']
+        skills: ['React', 'Redux', 'Node.js', 'TDD', 'BDD']
       }
     ]
   },
   {
     company: 'HealthAsyst',
+    client: 'Allscripts',
     positions: [
       {
         title: 'Software Developer',
@@ -84,6 +87,7 @@ const experienceData = [
   },
   {
     company: 'SLK Software',
+    client: '5/3 Bank',
     positions: [
       {
         title: 'Software Engineer',
@@ -116,13 +120,16 @@ const certificationsData = [
 ];
 
 const awardsData = [
-  'Star Team Award'
+  'Star Team Award',
+  'Employee of the Month Award',
 ];
 
 const topSkills = [
   'ReactJS',
+  'Next JS',
   'TypeScript',
-  'Node.js'
+  'Node.js',
+  'AEM Basics',
 ];
 
 export default function Home() {

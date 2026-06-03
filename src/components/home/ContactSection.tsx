@@ -5,6 +5,7 @@ import styles from '../../app/home.module.css';
 export default function ContactSection() {
   return (
     <section id="contact" className="container section-spacer" style={{ marginBottom: '100px' }}>
+      <p className="section-label fade-up" style={{ textAlign: 'center' }}>Get in Touch</p>
       <div className={`spotlight-card ${styles.contactCard} fade-up`}>
         <h2 style={{ textAlign: 'center', marginBottom: '8px' }}>Let&apos;s Connect</h2>
         <p style={{ textAlign: 'center', marginBottom: '32px' }}>
@@ -26,10 +27,10 @@ export default function ContactSection() {
           </button>
         </form>
 
-        <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'center', gap: '24px', color: 'var(--text-secondary)' }}>
-          <a href="https://www.linkedin.com/in/vivek-bhati-94324063/" target="_blank" rel="noopener noreferrer" style={{ transition: 'color 0.3s' }}>LinkedIn</a>
-          <a href="https://github.com/bhativivek" target="_blank" rel="noopener noreferrer" style={{ transition: 'color 0.3s' }}>GitHub</a>
-          <a href="mailto:vivekbhati9192@gmail.com" style={{ transition: 'color 0.3s' }}>Email</a>
+        <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'center', gap: '24px' }}>
+          <a href="https://www.linkedin.com/in/vivek-bhati-94324063/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500 }}>LinkedIn</a>
+          <a href="https://github.com/bhativivek" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500 }}>GitHub</a>
+          <a href="mailto:vivekbhati9192@gmail.com" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500 }}>Email</a>
         </div>
       </div>
     </section>
