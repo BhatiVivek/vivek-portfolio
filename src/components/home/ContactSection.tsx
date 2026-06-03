@@ -14,7 +14,7 @@ export default function ContactSection() {
 
         <form onSubmit={(e) => e.preventDefault()}>
           <div className={styles.inputGroup}>
-            <input type="text" className="form-input" placeholder="Your Name" />
+            <input id="contact-name" type="text" className="form-input" placeholder="Your Name" />
           </div>
           <div className={styles.inputGroup}>
             <input type="email" className="form-input" placeholder="Your Email" />
@@ -30,7 +30,17 @@ export default function ContactSection() {
         <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'center', gap: '24px' }}>
           <a href="https://www.linkedin.com/in/vivek-bhati-94324063/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500 }}>LinkedIn</a>
           <a href="https://github.com/bhativivek" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500 }}>GitHub</a>
-          <a href="mailto:vivekbhati9192@gmail.com" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500 }}>Email</a>
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('contact-name')?.focus();
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontWeight: 500 }}
+          >
+            Email
+          </a>
         </div>
       </div>
     </section>

@@ -383,18 +383,51 @@
 }
 
 /* ===== Awards ===== */
+.awardsSection {
+  position: relative;
+  width: 100%;
+  padding: 100px 0;
+  background-image: url('/images/award.avif');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.awardsOverlay {
+  display: none;
+}
+
+.awardsLabel {
+  color: var(--accent-glow) !important;
+}
+
+.awardsHeading {
+  color: var(--text-primary) !important;
+}
+
 .awardCard {
   padding: 24px;
   display: flex;
   align-items: center;
   gap: 16px;
   border-left: 4px solid var(--accent-glow);
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(12px);
+}
+
+.awardCard h3 {
+  color: var(--text-primary);
+}
+
+.awardCard p {
+  color: var(--text-secondary) !important;
 }
 
 .awardIcon {
   width: 44px;
   height: 44px;
-  background: var(--accent-dim);
+  background: rgba(13, 148, 136, 0.2);
   border-radius: 12px;
   display: flex;
   align-items: center;
