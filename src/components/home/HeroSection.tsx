@@ -22,8 +22,8 @@ export default function HeroSection({ handleDownloadResume }: HeroSectionProps) 
             Vivek Bhati<span className="cursor-blink"></span>
           </h1>
           <p className={styles.heroSubtitle}>
-            Senior Full-Stack Developer with 11+ years of experience specializing in React, TypeScript, Node.js, hands on experience in AEM UI development,
-            and cloud technologies. GCP Certified, passionate about microservices, and AI.
+            Senior Full-Stack Developer with 12+ years of experience specializing in React, TypeScript, Node.js, and cloud-native architectures. GCP Certified,
+            with hands-on AEM UI experience and a strong interest in microservices and AI.
           </p>
 
           <div className={styles.heroContactRow}>
@@ -41,7 +41,7 @@ export default function HeroSection({ handleDownloadResume }: HeroSectionProps) 
             </span>
           </div>
 
-          <div className={styles.heroCtaGroup}>
+          {/* <div className={styles.heroCtaGroup}>
             <a href="#experience" className="btn btn-secondary">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
               View Experience
@@ -50,7 +50,7 @@ export default function HeroSection({ handleDownloadResume }: HeroSectionProps) 
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
               Download Resume
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* Centre: Vertical social stack */}
@@ -80,7 +80,7 @@ export default function HeroSection({ handleDownloadResume }: HeroSectionProps) 
           </div>
           <div className={styles.heroProfileDots} aria-hidden="true" />
           <div className={styles.heroProfileBadge}>
-            <span>11+</span>
+            <span>12+</span>
             <small>Years Exp.</small>
           </div>
         </div>

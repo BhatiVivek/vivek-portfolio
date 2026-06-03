@@ -9,19 +9,20 @@ export default function SummarySection() {
         <div>
           <p className="section-label">About Me</p>
           <p className={styles.bioLead}>
-            I bridge the gap between complex backend logic and fluid frontend experiences. With a focus on{' '}
-            <strong>System Design</strong> and <strong>Cloud Architecture</strong>, I build applications that scale.
+            12 years across fintech, healthcare, and capital markets has taught me one thing —
+            good software is 20% code and 80% understanding the domain. I specialise in{' '}
+            <strong>React-led frontends</strong> backed by scalable <strong>Node.js services</strong>,
+            built for the complexity that production systems actually demand.
           </p>
           <p>
-            Experienced Senior Software Engineer with a strong background in full-stack development.
-            Expertise spans modern frontend frameworks (React, TypeScript), backend technologies (Node.js, ASP.NET),
-            and cloud platforms (GCP, AWS). Specialized domains include Investment Banking, Finance, and Healthcare.
-            Passionate about leveraging AI and cloud technologies to build innovative solutions.
+            I&apos;ve delivered for clients including investment banks, clinical trial platforms, and healthcare systems —
+            environments where correctness isn&apos;t optional. My stack centres on React, TypeScript, and Node.js on GCP,
+            with a growing focus on AI-augmented development and cloud-native architecture. GCP Certified.
           </p>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div className={`spotlight-card ${styles.statCard}`}>
-            <span className={styles.statNumber}>11+</span>
+            <span className={styles.statNumber}>12+</span>
             <span className={styles.statLabel}>Years Experience</span>
           </div>
           <div className={`spotlight-card ${styles.statCard}`}>

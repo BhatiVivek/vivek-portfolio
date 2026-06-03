@@ -129,7 +129,7 @@ const topSkills = [
   'Next JS',
   'TypeScript',
   'Node.js',
-  'AEM Basics',
+  'Adobe Experience Manager (AEM) UI Development',
 ];
 
 export default function Home() {
