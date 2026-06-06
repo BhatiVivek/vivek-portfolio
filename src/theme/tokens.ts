@@ -22,6 +22,11 @@ export const colors = {
   textPrimary:   '#111827',
   textSecondary: '#4B5563',
   textTertiary:  '#9CA3AF',
+
+  // Semantic
+  error:   '#EF4444',
+  success: '#10B981',
+  warning: '#F59E0B',
 } as const;
 
 export const radius = {

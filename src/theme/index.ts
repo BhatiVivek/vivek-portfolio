@@ -25,6 +25,9 @@ const theme = createTheme({
       disabled:  colors.textTertiary,
     },
     divider: colors.borderSubtle,
+    error:   { main: colors.error },
+    success: { main: colors.success },
+    warning: { main: colors.warning },
   },
   typography,
   shape: {

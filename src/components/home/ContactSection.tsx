@@ -67,7 +67,7 @@ export default function ContactSection() {
   };
 
   const fieldStyle = (hasError: boolean): React.CSSProperties => ({
-    borderColor: hasError ? '#ef4444' : undefined,
+    borderColor: hasError ? 'var(--color-error)' : undefined,
   });
 
   return (
@@ -128,7 +128,7 @@ export default function ContactSection() {
                 onChange={handleChange}
                 style={fieldStyle(!!errors.name)}
               />
-              {errors.name && <p style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '4px' }}>{errors.name}</p>}
+              {errors.name && <p className={styles.fieldError}>{errors.name}</p>}
             </div>
 
             <div className={styles.inputGroup}>
@@ -142,7 +142,7 @@ export default function ContactSection() {
                 onChange={handleChange}
                 style={fieldStyle(!!errors.email)}
               />
-              {errors.email && <p style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '4px' }}>{errors.email}</p>}
+              {errors.email && <p className={styles.fieldError}>{errors.email}</p>}
             </div>
 
             <div className={styles.inputGroup}>
@@ -158,17 +158,17 @@ export default function ContactSection() {
               />
               <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '4px' }}>
                 {errors.message
-                  ? <p style={{ color: '#ef4444', fontSize: '0.8rem', margin: 0 }}>{errors.message}</p>
+                  ? <p className={styles.fieldError} style={{ margin: 0 }}>{errors.message}</p>
                   : <span />
                 }
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', margin: 0 }}>
+                <p className={styles.fieldCounter}>
                   {form.message.length}/2000
                 </p>
               </div>
             </div>
 
             {status === 'error' && !errors.message && (
-              <p style={{ color: '#ef4444', fontSize: '0.85rem', marginBottom: '16px', textAlign: 'center' }}>
+              <p className={styles.statusError}>
                 Something went wrong. Please try again.
               </p>
             )}
