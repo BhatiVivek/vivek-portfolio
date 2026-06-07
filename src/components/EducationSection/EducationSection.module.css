@@ -1,0 +1,48 @@
+.educationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.educationCard {
+  padding: 24px;
+}
+
+.stackIcon {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-dim);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-glow);
+  margin-bottom: 8px;
+}
+
+.educationTitle {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.educationField {
+  color: var(--accent-glow);
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 4px;
+}
+
+.educationInstitution {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.educationPeriod {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+}
+
+.sectionSubtitle {
+  margin-bottom: 40px;
+}

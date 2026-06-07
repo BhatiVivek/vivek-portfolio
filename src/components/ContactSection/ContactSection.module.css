@@ -1,0 +1,28 @@
+.contactCard {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 48px;
+}
+
+.inputGroup {
+  margin-bottom: 24px;
+}
+
+.fieldError {
+  color: var(--color-error);
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.fieldCounter {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.statusError {
+  color: var(--color-error);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  text-align: center;
+}

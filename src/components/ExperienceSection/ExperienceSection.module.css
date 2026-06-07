@@ -1,0 +1,65 @@
+.companyHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.companyName {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-glow);
+  margin: 0;
+}
+
+.clientDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--border-highlight);
+  flex-shrink: 0;
+}
+
+.clientName {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.positionsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.positionItemIndented {
+  padding-left: 16px;
+  border-left: 2px solid var(--border-subtle);
+}
+
+.positionTitle {
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.positionPeriod {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.positionDesc {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.positionSkills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}

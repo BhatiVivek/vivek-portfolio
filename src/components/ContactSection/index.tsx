@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import { useRef, useState } from 'react';
-import styles from '../../app/home.module.css';
+import styles from './ContactSection.module.css';
 
 type FormFields = { name: string; email: string; message: string; honeypot: string };
 type FieldErrors = { name?: string; email?: string; message?: string };
@@ -104,7 +104,7 @@ export default function ContactSection() {
         ) : (
           <form onSubmit={handleSubmit} noValidate>
 
-            {/* Honeypot â€” hidden from real users, catches bots that fill all inputs */}
+            {/* Honeypot — hidden from real users, catches bots that fill all inputs */}
             <input
               type="text"
               name="honeypot"
@@ -179,7 +179,7 @@ export default function ContactSection() {
               style={{ width: '100%' }}
               disabled={status === 'sending'}
             >
-              {status === 'sending' ? 'Sendingâ€¦' : 'Send Message'}
+              {status === 'sending' ? 'Sending…' : 'Send Message'}
             </button>
           </form>
         )}

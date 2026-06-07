@@ -1,0 +1,47 @@
+.contentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.contentCard {
+  padding: 36px;
+  cursor: pointer;
+}
+
+.contentIcon {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-dim);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.contentTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.contentDesc {
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.contentLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-glow);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.sectionSubtitle {
+  margin-bottom: 40px;
+}

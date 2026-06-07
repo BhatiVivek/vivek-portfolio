@@ -12,9 +12,8 @@ import {
   AwardsSection,
   NavIsland,
   ContactSection,
-} from '../components';
+} from '../index';
 
-// Skills organized by category
 const skillsData: Record<string, string[]> = {
   'Languages': ['JavaScript', 'TypeScript', 'C#'],
   'JavaScript Libraries': ['React JS', 'Node.js', 'Express'],
@@ -133,7 +132,7 @@ const topSkills = [
   'Adobe Experience Manager (AEM) UI Development',
 ];
 
-export default function Home() {
+export default function HomePage() {
   const handleDownloadResume = () => {
     const link = document.createElement('a');
     link.href = '/Vivek_Bhati_Lead_Software_Engineer.pdf';
@@ -144,32 +143,24 @@ export default function Home() {
   };
 
   useEffect(() => {
-    // Fade-up intersection observer
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
+          if (entry.isIntersecting) entry.target.classList.add('visible');
         });
       },
       { threshold: 0.1 }
     );
-
     document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
 
-    // Spotlight card mouse effect
     const handleMouseMove = (e: MouseEvent) => {
       const cards = document.querySelectorAll('.spotlight-card') as NodeListOf<HTMLElement>;
       cards.forEach((card) => {
         const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
       });
     };
-
     document.addEventListener('mousemove', handleMouseMove);
 
     return () => {
@@ -180,39 +171,16 @@ export default function Home() {
 
   return (
     <>
-      {/* Floating Nav Island */}
       <NavIsland />
-
-      {/* Hero */}
       <HeroSection handleDownloadResume={handleDownloadResume} />
-
-      {/* Top Skills Badges */}
       <TopSkills topSkills={topSkills} />
-
-      {/* About / Professional Summary */}
       <SummarySection />
-
-      {/* Technical Arsenal - Skills Grid */}
       <SkillsGrid skillsData={skillsData} />
-
-      {/* Experience Timeline */}
       <ExperienceSection experienceData={experienceData} />
-
-      {/* Education */}
       <EducationSection educationData={educationData} />
-
-      {/* Certifications */}
       <CertificationsSection certificationsData={certificationsData} />
-
-      {/* Awards */}
       <AwardsSection awardsData={awardsData} />
-
-      {/* Contact */}
       <ContactSection />
-
-      {/* Blog & Videos */}
-      {/* <ContentSection /> */}
     </>
   );
 }
-

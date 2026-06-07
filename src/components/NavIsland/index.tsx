@@ -1,7 +1,7 @@
 ﻿'use client';
 
 import { useEffect, useState } from 'react';
-import styles from '../../app/home.module.css';
+import styles from './NavIsland.module.css';
 
 const navLinks = [
   { href: '#hero',       label: 'Home'    },

@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import styles from '../../app/home.module.css';
+import styles from './SummarySection.module.css';
 
 export default function SummarySection() {
   return (

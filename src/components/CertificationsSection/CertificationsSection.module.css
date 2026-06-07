@@ -1,0 +1,19 @@
+.certBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-card);
+}
+
+.certBadge:hover {
+  border-color: var(--accent-glow);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-float);
+}

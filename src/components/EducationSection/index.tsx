@@ -1,6 +1,6 @@
 ﻿'use client';
 
-import styles from '../../app/home.module.css';
+import styles from './EducationSection.module.css';
 
 interface Education {
   institution: string;
