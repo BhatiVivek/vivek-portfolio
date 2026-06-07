@@ -113,7 +113,7 @@ function AdminNewsPage() {
           News Crawler
         </Typography>
 
-        {/* Manual Trigger */}
+        // Manual Trigger
         <Card sx={{ backgroundColor: 'rgba(255,255,255,0.95)', mb: 3, borderRadius: 2 }}>
           <CardContent>
             <Typography variant="h6" fontWeight="bold" mb={2}>
@@ -160,7 +160,7 @@ function AdminNewsPage() {
           </CardContent>
         </Card>
 
-        {/* Add Source */}
+        // Add Source
         <Card sx={{ backgroundColor: 'rgba(255,255,255,0.95)', mb: 3, borderRadius: 2 }}>
           <CardContent>
             <Typography variant="h6" fontWeight="bold" mb={2}>
@@ -191,7 +191,7 @@ function AdminNewsPage() {
           </CardContent>
         </Card>
 
-        {/* Source List */}
+        // Source List
         <Card sx={{ backgroundColor: 'rgba(255,255,255,0.95)', borderRadius: 2 }}>
           <CardContent>
             <Typography variant="h6" fontWeight="bold" mb={2}>
