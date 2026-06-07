@@ -2,9 +2,28 @@ import { NextRequest, NextResponse } from 'next/server';
 import { runCrawl, getSlot } from '@/lib/crawl-job';
 
 /**
+ * GET /api/news/crawl
+ *
+ * Called automatically by Vercel Cron Jobs (see vercel.json).
+ * Vercel always sends GET — secured via CRON_SECRET header.
+ * Schedule: 06:00 UTC (morning) and 18:00 UTC (evening) daily.
+ */
+export async function GET(req: NextRequest) {
+  const authHeader = req.headers.get('authorization');
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const slot = getSlot();
+  runCrawl(slot).catch((err) => console.error('[Cron] Error:', err));
+
+  return NextResponse.json({ message: `Cron triggered for ${slot} slot`, slot });
+}
+
+/**
  * POST /api/news/crawl
  *
- * Manual trigger for the crawler (admin panel "Run Now" button).
+ * Manual trigger from the News page "Run Now" button.
  * Accepts optional body: { slot: "morning" | "evening" }
  *
  * The crawl runs async — we fire it and return immediately so the

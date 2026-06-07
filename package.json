@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "cron:start": "node --env-file=.env.local --import tsx scripts/cron-crawler.ts",
-    "cron:now": "cross-env RUN_NOW=true node --env-file=.env.local --import tsx scripts/cron-crawler.ts"
+    "cron:now": "node --env-file=.env.local --import tsx scripts/cron-crawler.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.96.0",
@@ -22,22 +21,20 @@
     "dotenv": "^17.4.2",
     "mongoose": "^9.6.2",
     "next": "16.1.6",
-    "node-cron": "^4.2.1",
-    "openai": "^6.39.0",
     "nodemailer": "^8.0.10",
+    "openai": "^6.39.0",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/node-cron": "^3.0.11",
     "@types/nodemailer": "^8.0.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
-    "typescript": "^5",
-    "tsx": "^4.22.3"
+    "tsx": "^4.22.3",
+    "typescript": "^5"
   }
 }
