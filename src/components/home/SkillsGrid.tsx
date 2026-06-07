@@ -1,12 +1,11 @@
 'use client';
 
+import React from 'react';
 import styles from '../../app/home.module.css';
 
 interface SkillsGridProps {
   skillsData: Record<string, string[]>;
 }
-
-import React from 'react';
 
 const categoryIcons: Record<string, React.ReactNode> = {
   'Languages': (
@@ -44,8 +43,9 @@ const categoryIcons: Record<string, React.ReactNode> = {
 export default function SkillsGrid({ skillsData }: SkillsGridProps) {
   return (
     <section id="stack" className="container section-spacer">
+      <p className="section-label fade-up">Tech Stack</p>
       <h2 className="fade-up" style={{ marginBottom: '12px' }}>Technical Arsenal</h2>
-      <p className="fade-up" style={{ marginBottom: '40px', color: 'var(--text-secondary)' }}>
+      <p className="fade-up" style={{ marginBottom: '40px' }}>
         Full-stack expertise across modern web technologies and cloud platforms.
       </p>
       <div className={styles.stackGrid}>
@@ -56,7 +56,7 @@ export default function SkillsGrid({ skillsData }: SkillsGridProps) {
             style={{ transitionDelay: `${index * 0.05}s` }}
           >
             <div className={styles.stackIcon}>
-              {categoryIcons[category] || (
+              {categoryIcons[category] ?? (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg>
               )}
             </div>

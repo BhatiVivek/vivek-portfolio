@@ -1,5 +1,7 @@
 'use client';
 
+import styles from '../../app/home.module.css';
+
 interface Position {
   title: string;
   period: string;
@@ -10,6 +12,7 @@ interface Position {
 
 interface Experience {
   company: string;
+  client?: string;
   duration?: string;
   positions: Position[];
 }
@@ -21,31 +24,50 @@ interface ExperienceSectionProps {
 export default function ExperienceSection({ experienceData }: ExperienceSectionProps) {
   return (
     <section id="experience" className="container section-spacer">
-      <h2 className="fade-up" style={{ marginBottom: '40px' }}>Experience</h2>
+      <p className="section-label fade-up">Work History</p>
+      <h2 className={`fade-up ${styles.sectionHeading}`}>Experience</h2>
+      <p className={`fade-up ${styles.sectionSubtitle}`}>
+        A decade of building products across finance, healthcare, and enterprise software.
+      </p>
+
       <div className="timeline fade-up">
-        {experienceData.map((exp, expIdx) =>
-          exp.positions.map((pos, posIdx) => (
-            <div className="timeline-item" key={`${expIdx}-${posIdx}`}>
-              <h3 style={{ fontSize: '1.25rem' }}>{pos.title}</h3>
-              <div style={{ color: 'var(--accent-glow)', fontSize: '0.9rem', marginBottom: '8px', fontWeight: 600 }}>
-                {exp.company} | {pos.period}
-              </div>
-              <p style={{ fontSize: '0.95rem', color: 'var(--text-tertiary)', marginBottom: '8px' }}>
-                {pos.location}
-              </p>
-              {pos.description && (
-                <p style={{ fontSize: '0.95rem', marginBottom: '12px' }}>{pos.description}</p>
-              )}
-              {pos.skills && pos.skills.length > 0 && (
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' }}>
-                  {pos.skills.map((skill, idx) => (
-                    <span key={idx} className="tech-pill">{skill}</span>
-                  ))}
-                </div>
+        {experienceData.map((exp, expIdx) => (
+          <div className="timeline-item" key={expIdx} style={{ transitionDelay: `${expIdx * 0.08}s` }}>
+            <div className={styles.companyHeader}>
+              <p className={styles.companyName}>{exp.company}</p>
+              {exp.client && (
+                <>
+                  <span className={styles.clientDot} />
+                  <p className={styles.clientName}>Client: {exp.client}</p>
+                </>
               )}
             </div>
-          ))
-        )}
+
+            <div className={styles.positionsGroup}>
+              {exp.positions.map((pos, posIdx) => (
+                <div
+                  key={posIdx}
+                  className={posIdx > 0 ? styles.positionItemIndented : undefined}
+                >
+                  <h3 className={styles.positionTitle}>{pos.title}</h3>
+                  <p className={styles.positionPeriod}>
+                    {pos.period}&nbsp;·&nbsp;{pos.location}
+                  </p>
+                  {pos.description && (
+                    <p className={styles.positionDesc}>{pos.description}</p>
+                  )}
+                  {pos.skills && pos.skills.length > 0 && (
+                    <div className={styles.positionSkills}>
+                      {pos.skills.map((skill, idx) => (
+                        <span key={idx} className="tech-pill">{skill}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
