@@ -1,16 +1,18 @@
 'use client';
 
 import { useEffect } from 'react';
-import HeroSection from '../components/home/HeroSection';
-import TopSkills from '../components/home/TopSkills';
-import SummarySection from '../components/home/SummarySection';
-import SkillsGrid from '../components/home/SkillsGrid';
-import ExperienceSection from '../components/home/ExperienceSection';
-import EducationSection from '../components/home/EducationSection';
-import CertificationsSection from '../components/home/CertificationsSection';
-import AwardsSection from '../components/home/AwardsSection';
-import NavIsland from '../components/home/NavIsland';
-import ContactSection from '../components/home/ContactSection';
+import {
+  HeroSection,
+  TopSkills,
+  SummarySection,
+  SkillsGrid,
+  ExperienceSection,
+  EducationSection,
+  CertificationsSection,
+  AwardsSection,
+  NavIsland,
+  ContactSection,
+} from '../components';
 
 // Skills organized by category
 const skillsData: Record<string, string[]> = {
@@ -207,6 +209,9 @@ export default function Home() {
 
       {/* Contact */}
       <ContactSection />
+
+      {/* Blog & Videos */}
+      {/* <ContentSection /> */}
     </>
   );
 }

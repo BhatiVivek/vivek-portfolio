@@ -1,3 +1,11 @@
+// ADMIN FEATURE — temporarily disabled (pending real authentication)
+// To re-enable: restore full component and implement NextAuth or JWT-based auth
+
+export default function AdminNewsPage() {
+  return null;
+}
+
+/*
 'use client';
 
 import {
@@ -16,7 +24,7 @@ interface NewsSource {
   is_active: boolean;
 }
 
-export default function AdminNewsPage() {
+function AdminNewsPage() {
   const [sources, setSources] = useState<NewsSource[]>([]);
   const [newName, setNewName] = useState('');
   const [newUrl, setNewUrl] = useState('');
@@ -246,3 +254,4 @@ export default function AdminNewsPage() {
     </Box>
   );
 }
+*/

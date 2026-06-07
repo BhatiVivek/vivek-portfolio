@@ -12,9 +12,9 @@
 }
 
 .inner {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 24px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -83,7 +83,7 @@
 /* Mobile: collapse labels, keep icons */
 @media (max-width: 480px) {
   .inner {
-    padding: 0 12px;
+    padding: 0 16px;
   }
   .link {
     padding: 3px 8px;

@@ -1,3 +1,12 @@
+// ADMIN FEATURE — temporarily disabled (pending real authentication)
+// To re-enable: restore full component and implement NextAuth or JWT-based auth
+// Original code preserved below this stub
+
+export default function AdminPage() {
+  return null;
+}
+
+/*
 'use client';
 
 import { Box, Container, Typography, Card, CardContent, Button, Stack, TextField, InputAdornment, IconButton } from '@mui/material';
@@ -64,7 +73,6 @@ export default function AdminPage() {
       <Container maxWidth="sm">
 
         {!isLoggedIn ? (
-          /* ── Login card ─────────────────────────────────────────── */
           <Box>
             <Typography variant="h5" sx={{ color: 'rgba(255,255,255,0.5)', fontWeight: 400, mb: 0.5, letterSpacing: '0.08em', fontSize: '0.8rem', textTransform: 'uppercase' }}>
               Admin
@@ -131,7 +139,6 @@ export default function AdminPage() {
             </Card>
           </Box>
         ) : (
-          /* ── Dashboard ──────────────────────────────────────────── */
           <Box>
             <Stack direction="row" justifyContent="space-between" alignItems="flex-start" mb={4}>
               <Box>
@@ -197,7 +204,6 @@ export default function AdminPage() {
   );
 }
 
-// Shared MUI TextField dark-mode styles
 const inputSx = {
   '& .MuiOutlinedInput-root': {
     color: 'white',
@@ -208,3 +214,4 @@ const inputSx = {
   '& .MuiInputLabel-root': { color: 'rgba(255,255,255,0.45)' },
   '& .MuiInputLabel-root.Mui-focused': { color: '#a78bfa' },
 };
+*/

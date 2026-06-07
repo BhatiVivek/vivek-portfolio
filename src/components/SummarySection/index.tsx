@@ -1,10 +1,10 @@
-'use client';
+﻿'use client';
 
 import styles from '../../app/home.module.css';
 
 export default function SummarySection() {
   return (
-    <section id="about" className="container section-spacer">
+    <section id="about" className="container section-spacer" style={{ paddingTop: '60px' }}>
       <div className={`${styles.aboutGrid} fade-up`}>
         <div>
           <p className="section-label">About Me</p>

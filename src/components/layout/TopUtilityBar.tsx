@@ -34,16 +34,8 @@ export default function TopUtilityBar() {
           })}
         </nav>
 
-        {/* Right — admin entry */}
-        <Link
-          href="/admin"
-          className={`${styles.link} ${styles.adminLink} ${pathname.startsWith('/admin') ? styles.active : ''}`}
-        >
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-          </svg>
-          Admin
-        </Link>
+        {/* Admin link — disabled until real auth is implemented */}
+        {/* <Link href="/admin" className={...}>Admin</Link> */}
       </div>
     </div>
   );
