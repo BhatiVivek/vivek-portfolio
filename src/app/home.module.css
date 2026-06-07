@@ -4,32 +4,37 @@
   top: 32px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--bg-surface);
   backdrop-filter: blur(16px);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-pill);
-  padding: 8px 12px;
+  padding: 6px 8px;
   display: flex;
-  gap: 8px;
+  gap: 4px;
   z-index: 1000;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 24px -4px rgba(13, 148, 136, 0.12), 0 1px 4px rgba(0,0,0,0.06);
 }
 
 .navItem {
-  padding: 8px 16px;
+  padding: 8px 18px;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 500;
   border-radius: var(--radius-pill);
-  transition: all 0.3s ease;
+  transition: color 0.2s ease, background 0.2s ease;
   text-decoration: none;
   white-space: nowrap;
 }
 
-.navItem:hover,
-.navItemActive {
+.navItem:hover {
   color: var(--text-primary);
   background: var(--bg-void);
+}
+
+.navItemActive {
+  color: var(--accent-glow);
+  background: var(--accent-dim);
+  font-weight: 600;
 }
 
 .navItemAccent {
@@ -543,4 +548,190 @@
   .stackGrid {
     grid-template-columns: 1fr;
   }
+}
+
+/* ===== Section Headings ===== */
+.sectionHeading {
+  margin-bottom: 12px;
+}
+
+.sectionSubtitle {
+  margin-bottom: 40px;
+}
+
+/* ===== Hero — Contact Row ===== */
+.contactItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+}
+
+.contactItemTertiary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-tertiary);
+}
+
+/* ===== Experience Section ===== */
+.companyHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.companyName {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-glow);
+  margin: 0;
+}
+
+.clientDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--border-highlight);
+  flex-shrink: 0;
+}
+
+.clientName {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.positionsGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.positionItemIndented {
+  padding-left: 16px;
+  border-left: 2px solid var(--border-subtle);
+}
+
+.positionTitle {
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.positionPeriod {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.positionDesc {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.positionSkills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ===== Content Section ===== */
+.contentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.contentCard {
+  padding: 36px;
+  cursor: pointer;
+}
+
+.contentIcon {
+  width: 48px;
+  height: 48px;
+  background: var(--accent-dim);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.contentTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.contentDesc {
+  color: var(--text-secondary);
+  font-size: 0.93rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.contentLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--accent-glow);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+/* ===== Education Section ===== */
+.educationGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.educationTitle {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.educationField {
+  color: var(--accent-glow);
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 4px;
+}
+
+.educationInstitution {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.educationPeriod {
+  font-size: 0.82rem;
+  color: var(--text-tertiary);
+}
+
+/* ===== Contact Form — States ===== */
+.fieldError {
+  color: var(--color-error);
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.fieldCounter {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.statusError {
+  color: var(--color-error);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  text-align: center;
 }

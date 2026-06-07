@@ -64,32 +64,38 @@ export async function POST(req: NextRequest) {
     };
 
     const { name, email, message, website } = body;
+    console.log("body", body);
 
     // ── 2. Honeypot check ──────────────────────────────────────────────────
     // Real users never see or fill this field (it's hidden via CSS).
     // Bots that blindly fill all inputs get silently rejected.
     if (website) {
       // Return 200 to not tip off the bot that it was blocked.
+      console.log("inside website", website);
       return NextResponse.json({ ok: true });
     }
 
     // ── 3. Server-side validation (never trust the client) ─────────────────
     if (!name?.trim() || !email?.trim() || !message?.trim()) {
+      console.log("inside server side validation");
       return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      console.log("inside regex of email");
       return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 });
     }
 
     // ── 4. Input length limits ─────────────────────────────────────────────
     // Stops 10MB message payloads from hitting your SMTP server.
     if (name.length > 100 || email.length > 254 || message.length > 2000) {
+      console.log("inside input  length");
       return NextResponse.json({ error: 'Input too long.' }, { status: 400 });
     }
 
     // ── 5. Header injection guard ──────────────────────────────────────────
     if (containsNewline(name) || containsNewline(email)) {
+      console.log("inside header injection");
       return NextResponse.json({ error: 'Invalid input.' }, { status: 400 });
     }
 
@@ -99,16 +105,19 @@ export async function POST(req: NextRequest) {
     const safeMessage = escapeHtml(message.trim()).replace(/\n/g, '<br/>');
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.zoho.com',
+      port: 465,
+      secure: true, // SSL on port 465
       auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
+        user: process.env.ZOHO_USER,
+        pass: process.env.ZOHO_PASSWORD,
       },
     });
 
-    await transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
-      to: '1xha8660sp@wshu.net',
+    console.log("inside 6", transporter);
+    const info = await transporter.sendMail({
+      from: `"Portfolio Contact" <${process.env.ZOHO_USER}>`,
+      to: process.env.ZOHO_USER,
       replyTo: email.trim(), // safe: nodemailer validates the header value
       subject: `Portfolio Contact from ${name.trim()}`,
       html: `
@@ -135,7 +144,18 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    return NextResponse.json({ ok: true });
+    // info.accepted → addresses the SMTP server accepted
+    // info.rejected → addresses it refused (non-empty = delivery failed)
+    // info.response → raw SMTP reply, e.g. "250 OK" means queued for delivery
+    console.log('[contact] SMTP response:', info.response);
+    console.log('[contact] Accepted:', info.accepted);
+
+    if (info.rejected.length > 0) {
+      console.error('[contact] Rejected addresses:', info.rejected);
+      return NextResponse.json({ error: 'Mail delivery rejected.' }, { status: 502 });
+    }
+
+    return NextResponse.json({ ok: true, messageId: info.messageId });
   } catch (err) {
     console.error('Contact mail error:', err);
     return NextResponse.json({ error: 'Failed to send message.' }, { status: 500 });

@@ -1,5 +1,7 @@
 'use client';
 
+import styles from '../../app/home.module.css';
+
 interface Position {
   title: string;
   period: string;
@@ -23,59 +25,39 @@ export default function ExperienceSection({ experienceData }: ExperienceSectionP
   return (
     <section id="experience" className="container section-spacer">
       <p className="section-label fade-up">Work History</p>
-      <h2 className="fade-up" style={{ marginBottom: '12px' }}>Experience</h2>
-      <p className="fade-up" style={{ marginBottom: '40px' }}>
+      <h2 className={`fade-up ${styles.sectionHeading}`}>Experience</h2>
+      <p className={`fade-up ${styles.sectionSubtitle}`}>
         A decade of building products across finance, healthcare, and enterprise software.
       </p>
 
       <div className="timeline fade-up">
         {experienceData.map((exp, expIdx) => (
           <div className="timeline-item" key={expIdx} style={{ transitionDelay: `${expIdx * 0.08}s` }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '12px' }}>
-              <p style={{
-                fontSize: '0.72rem',
-                fontWeight: 700,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-                color: 'var(--accent-glow)',
-                margin: 0,
-              }}>
-                {exp.company}
-              </p>
+            <div className={styles.companyHeader}>
+              <p className={styles.companyName}>{exp.company}</p>
               {exp.client && (
                 <>
-                  <span style={{ width: '3px', height: '3px', borderRadius: '50%', background: 'var(--border-highlight)', flexShrink: 0 }} />
-                  <p style={{
-                    fontSize: '0.72rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.06em',
-                    color: 'var(--text-tertiary)',
-                    margin: 0,
-                  }}>
-                    Client: {exp.client}
-                  </p>
+                  <span className={styles.clientDot} />
+                  <p className={styles.clientName}>Client: {exp.client}</p>
                 </>
               )}
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div className={styles.positionsGroup}>
               {exp.positions.map((pos, posIdx) => (
                 <div
                   key={posIdx}
-                  style={{
-                    paddingLeft: posIdx > 0 ? '16px' : '0',
-                    borderLeft: posIdx > 0 ? '2px solid var(--border-subtle)' : 'none',
-                  }}
+                  className={posIdx > 0 ? styles.positionItemIndented : undefined}
                 >
-                  <h3 style={{ fontSize: '1.15rem', marginBottom: '4px' }}>{pos.title}</h3>
-                  <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)', marginBottom: '4px' }}>
+                  <h3 className={styles.positionTitle}>{pos.title}</h3>
+                  <p className={styles.positionPeriod}>
                     {pos.period}&nbsp;·&nbsp;{pos.location}
                   </p>
                   {pos.description && (
-                    <p style={{ fontSize: '0.95rem', marginBottom: '10px' }}>{pos.description}</p>
+                    <p className={styles.positionDesc}>{pos.description}</p>
                   )}
                   {pos.skills && pos.skills.length > 0 && (
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' }}>
+                    <div className={styles.positionSkills}>
                       {pos.skills.map((skill, idx) => (
                         <span key={idx} className="tech-pill">{skill}</span>
                       ))}

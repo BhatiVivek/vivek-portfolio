@@ -3,9 +3,12 @@
 import { useRef, useState } from 'react';
 import styles from '../../app/home.module.css';
 
+type FormFields = { name: string; email: string; message: string; honeypot: string };
 type FieldErrors = { name?: string; email?: string; message?: string };
 
-function validate(name: string, email: string, message: string): FieldErrors {
+const INITIAL_FORM: FormFields = { name: '', email: '', message: '', honeypot: '' };
+
+function validate({ name, email, message }: FormFields): FieldErrors {
   const errors: FieldErrors = {};
   if (!name.trim()) errors.name = 'Name is required.';
   if (!email.trim()) {
@@ -20,28 +23,24 @@ function validate(name: string, email: string, message: string): FieldErrors {
 }
 
 export default function ContactSection() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [honeypot, setHoneypot] = useState(''); // never shown to real users
+  const [form, setForm] = useState<FormFields>(INITIAL_FORM);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
-  // Record when the form was rendered.
-  // Bots submit instantly; humans take at least a couple of seconds.
   const loadedAt = useRef(Date.now());
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setForm(prev => ({ ...prev, [name]: value }));
+    setErrors(prev => ({ ...prev, [name]: undefined }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Time-based bot check: reject submissions under 1.5 seconds.
-    const elapsed = Date.now() - loadedAt.current;
-    if (elapsed < 1500) {
-      // Silently ignore — don't tell the bot why it failed.
-      return;
-    }
+    if (Date.now() - loadedAt.current < 1500) return;
 
-    const fieldErrors = validate(name, email, message);
+    const fieldErrors = validate(form);
     setErrors(fieldErrors);
     if (Object.keys(fieldErrors).length > 0) return;
 
@@ -50,7 +49,7 @@ export default function ContactSection() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message, website: honeypot }),
+        body: JSON.stringify({ name: form.name, email: form.email, message: form.message, website: form.honeypot }),
       });
 
       if (res.status === 429) {
@@ -61,14 +60,14 @@ export default function ContactSection() {
 
       if (!res.ok) throw new Error();
       setStatus('sent');
-      setName(''); setEmail(''); setMessage('');
+      setForm(INITIAL_FORM);
     } catch {
       setStatus('error');
     }
   };
 
   const fieldStyle = (hasError: boolean): React.CSSProperties => ({
-    borderColor: hasError ? '#ef4444' : undefined,
+    borderColor: hasError ? 'var(--color-error)' : undefined,
   });
 
   return (
@@ -105,19 +104,14 @@ export default function ContactSection() {
         ) : (
           <form onSubmit={handleSubmit} noValidate>
 
-            {/* ── Honeypot ─────────────────────────────────────────────────
-                Real users never see this (positioned off-screen).
-                Bots that fill all inputs get silently rejected server-side.
-                tabIndex={-1} and autoComplete="off" reduce false positives
-                from browser autofill.
-            ─────────────────────────────────────────────────────────────── */}
+            {/* Honeypot — hidden from real users, catches bots that fill all inputs */}
             <input
               type="text"
-              name="website"
-              value={honeypot}
-              onChange={e => setHoneypot(e.target.value)}
+              name="honeypot"
+              value={form.honeypot}
+              onChange={handleChange}
               tabIndex={-1}
-              autoComplete="off"
+              autoComplete="new-password"
               aria-hidden="true"
               style={{ position: 'absolute', left: '-9999px', top: '-9999px' }}
             />
@@ -126,52 +120,55 @@ export default function ContactSection() {
               <input
                 id="contact-name"
                 type="text"
+                name="name"
                 className="form-input"
                 placeholder="Your Name *"
                 maxLength={100}
-                value={name}
-                onChange={(e) => { setName(e.target.value); setErrors((p) => ({ ...p, name: undefined })); }}
+                value={form.name}
+                onChange={handleChange}
                 style={fieldStyle(!!errors.name)}
               />
-              {errors.name && <p style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '4px' }}>{errors.name}</p>}
+              {errors.name && <p className={styles.fieldError}>{errors.name}</p>}
             </div>
 
             <div className={styles.inputGroup}>
               <input
                 type="email"
+                name="email"
                 className="form-input"
                 placeholder="Your Email *"
                 maxLength={254}
-                value={email}
-                onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }}
+                value={form.email}
+                onChange={handleChange}
                 style={fieldStyle(!!errors.email)}
               />
-              {errors.email && <p style={{ color: '#ef4444', fontSize: '0.8rem', marginTop: '4px' }}>{errors.email}</p>}
+              {errors.email && <p className={styles.fieldError}>{errors.email}</p>}
             </div>
 
             <div className={styles.inputGroup}>
               <textarea
+                name="message"
                 className="form-input"
                 rows={4}
                 placeholder="Message *"
                 maxLength={2000}
-                value={message}
-                onChange={(e) => { setMessage(e.target.value); setErrors((p) => ({ ...p, message: undefined })); }}
+                value={form.message}
+                onChange={handleChange}
                 style={fieldStyle(!!errors.message)}
               />
               <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '4px' }}>
                 {errors.message
-                  ? <p style={{ color: '#ef4444', fontSize: '0.8rem', margin: 0 }}>{errors.message}</p>
+                  ? <p className={styles.fieldError} style={{ margin: 0 }}>{errors.message}</p>
                   : <span />
                 }
-                <p style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', margin: 0 }}>
-                  {message.length}/2000
+                <p className={styles.fieldCounter}>
+                  {form.message.length}/2000
                 </p>
               </div>
             </div>
 
             {status === 'error' && !errors.message && (
-              <p style={{ color: '#ef4444', fontSize: '0.85rem', marginBottom: '16px', textAlign: 'center' }}>
+              <p className={styles.statusError}>
                 Something went wrong. Please try again.
               </p>
             )}

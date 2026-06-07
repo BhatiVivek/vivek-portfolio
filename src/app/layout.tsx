@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Providers } from "./providers";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -9,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Vivek Bhati | Senior Software Engineer",
-  description: "Senior Full-Stack Developer specializing in React, TypeScript, Node.js, and Cloud Technologies. 10+ years of experience building scalable web applications.",
+  title: "Vivek Bhati | Specialist Full stack Engineer",
+  description: "Senior Full-Stack Developer specializing in React, TypeScript, Node.js, AEM and Cloud Technologies. 11+ years of experience building scalable web applications.",
 };
 
 export default function RootLayout({
@@ -20,8 +21,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`} style={{ fontFamily: "'Inter', sans-serif" }}>
-        {children}
+      <body className={inter.variable}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
