@@ -1,6 +1,6 @@
-'use client';
+﻿'use client';
 
-import styles from '../../app/home.module.css';
+import styles from './AwardsSection.module.css';
 
 interface AwardsSectionProps {
   awardsData: string[];

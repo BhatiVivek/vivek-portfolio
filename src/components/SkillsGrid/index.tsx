@@ -1,7 +1,7 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
-import styles from '../../app/home.module.css';
+import styles from './SkillsGrid.module.css';
 
 interface SkillsGridProps {
   skillsData: Record<string, string[]>;

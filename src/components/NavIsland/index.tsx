@@ -1,7 +1,7 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
-import styles from '../../app/home.module.css';
+import styles from './NavIsland.module.css';
 
 const navLinks = [
   { href: '#hero',       label: 'Home'    },
@@ -11,19 +11,16 @@ const navLinks = [
   { href: '#contact',    label: 'Contact' },
 ];
 
-const sectionIds = navLinks.map(l => l.href.slice(1)); // ['hero', 'about', ...]
+const sectionIds = navLinks.map(l => l.href.slice(1));
 
 export default function NavIsland() {
   const [active, setActive] = useState('hero');
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
-
-    // Track how much of each section is visible
     const visibility: Record<string, number> = {};
 
     const pick = () => {
-      // Highlight whichever section has the highest intersection ratio
       const top = Object.entries(visibility).sort((a, b) => b[1] - a[1])[0];
       if (top && top[1] > 0) setActive(top[0]);
     };
@@ -37,7 +34,7 @@ export default function NavIsland() {
           visibility[id] = entry.intersectionRatio;
           pick();
         },
-        { threshold: Array.from({ length: 21 }, (_, i) => i * 0.05) } // 0, 0.05, 0.10 … 1.0
+        { threshold: Array.from({ length: 21 }, (_, i) => i * 0.05) }
       );
 
       obs.observe(el);

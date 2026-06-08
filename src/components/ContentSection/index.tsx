@@ -1,7 +1,7 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
-import styles from '../../app/home.module.css';
+import styles from './ContentSection.module.css';
 
 export default function ContentSection() {
   return (

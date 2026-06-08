@@ -1,6 +1,6 @@
-'use client';
+﻿'use client';
 
-import styles from '../../app/home.module.css';
+import styles from './CertificationsSection.module.css';
 
 interface CertificationsSectionProps {
   certificationsData: string[];

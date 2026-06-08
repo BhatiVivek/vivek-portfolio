@@ -1,7 +1,7 @@
-'use client';
+﻿'use client';
 
 import { useRef, useState } from 'react';
-import styles from '../../app/home.module.css';
+import styles from './ContactSection.module.css';
 
 type FormFields = { name: string; email: string; message: string; honeypot: string };
 type FieldErrors = { name?: string; email?: string; message?: string };

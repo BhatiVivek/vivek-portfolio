@@ -1,11 +1,5 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI as string;
-
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable in .env.local');
-}
-
 // Cached connection to reuse across hot-reloads in dev
 declare global {
   // eslint-disable-next-line no-var
@@ -19,6 +13,12 @@ if (!cached) {
 }
 
 export async function connectDB() {
+  // Read at call-time, not at module-load time — allows dotenv to run first in the cron script
+  const MONGODB_URI = process.env.MONGODB_URI;
+  if (!MONGODB_URI) {
+    throw new Error('Please define the MONGODB_URI environment variable in .env.local');
+  }
+
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {

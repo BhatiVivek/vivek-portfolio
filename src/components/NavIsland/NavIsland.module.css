@@ -1,0 +1,55 @@
+.navIsland {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-surface);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 6px 8px;
+  display: flex;
+  gap: 4px;
+  z-index: 1000;
+  box-shadow: 0 4px 24px -4px rgba(13, 148, 136, 0.12), 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.navItem {
+  padding: 8px 18px;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: var(--radius-pill);
+  transition: color 0.2s ease, background 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navItem:hover {
+  color: var(--text-primary);
+  background: var(--bg-void);
+}
+
+.navItemActive {
+  color: var(--accent-glow);
+  background: var(--accent-dim);
+  font-weight: 600;
+}
+
+.navItemAccent {
+  color: var(--accent-glow) !important;
+}
+
+@media (max-width: 768px) {
+  .navIsland {
+    width: 90%;
+    justify-content: space-around;
+    padding: 6px 8px;
+    gap: 4px;
+  }
+
+  .navItem {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+}
