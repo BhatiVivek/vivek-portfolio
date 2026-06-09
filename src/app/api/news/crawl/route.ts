@@ -15,9 +15,14 @@ export async function GET(req: NextRequest) {
   }
 
   const slot = getSlot();
-  runCrawl(slot).catch((err) => console.error('[Cron] Error:', err));
 
-  return NextResponse.json({ message: `Cron triggered for ${slot} slot`, slot });
+  try {
+    const result = await runCrawl(slot);
+    return NextResponse.json({ message: `Cron complete for ${slot} slot`, slot, ...result });
+  } catch (err) {
+    console.error('[Cron] Error:', err);
+    return NextResponse.json({ error: String(err) }, { status: 500 });
+  }
 }
 
 /**

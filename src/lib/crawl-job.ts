@@ -69,6 +69,7 @@ export async function runCrawl(slot: 'morning' | 'evening'): Promise<{ saved: nu
             // Silently fall back to RSS description
           }
 
+          // Summarize and tag using the OpenAI API
           const { summary, tag } = await summarizeAndTag(title, text);
 
           await NewsArticle.create({
