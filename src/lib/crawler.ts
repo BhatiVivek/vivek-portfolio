@@ -147,16 +147,13 @@ export async function summarizeAndTag(title: string, text: string): Promise<Summ
       {
         role: 'user',
         content: `Analyze this AI/tech news article. Respond with ONLY valid JSON.
-
-Title: ${title}
-
-Content: ${text.slice(0, 2000)}
-
-Return exactly:
-{
-  "summary": "One sentence with the main point. One sentence with a key implication or detail.",
-  "tag": "exactly one of: LLMs, Computer Vision, NLP, AI Agents, Robotics, AI Ethics, ML Research, AI Tools, Generative AI, Other"
-}`,
+          Title: ${title}
+          Content: ${text.slice(0, 2000)}
+          Return exactly:
+          {
+            "summary": "One sentence with the main point. One sentence with a key implication or detail.",
+            "tag": "exactly one of: LLMs, Computer Vision, NLP, AI Agents, Robotics, AI Ethics, ML Research, AI Tools, Generative AI, Other"
+          }`,
       },
     ],
   });
