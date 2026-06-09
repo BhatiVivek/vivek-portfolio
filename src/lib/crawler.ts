@@ -52,7 +52,7 @@ export async function crawlSource(feedUrl: string, sourceName: string): Promise<
   const addArticle = (title: string, url: string, description: string) => {
     const cleanTitle = title.trim();
     const cleanUrl = url.trim();
-    if (cleanTitle && cleanUrl && articles.length < 5) {
+    if (cleanTitle && cleanUrl && articles.length < 10) {
       articles.push({
         title: cleanTitle,
         url: cleanUrl,
