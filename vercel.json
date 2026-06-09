@@ -6,7 +6,7 @@
     },
     {
       "path": "/api/news/crawl",
-      "schedule": "0 18 * * *"
+      "schedule": "* * * * *"
     }
   ]
 }
