@@ -80,7 +80,6 @@ export async function runCrawl(slot: 'morning' | 'evening'): Promise<{ saved: nu
             source: source.name,
             published_at: new Date(),
             slot,
-            is_read: false,
           });
 
           console.log(`[Crawler] ✓ ${title.slice(0, 60)}  [${tag}]`);
