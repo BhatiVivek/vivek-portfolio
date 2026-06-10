@@ -116,12 +116,126 @@
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ===== Stats Row ===== */
-.statsRow {
+/* ===== Tabs + Filter Row ===== */
+.tabFilterRow {
   display: flex;
-  gap: 20px;
-  margin-bottom: 32px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
   flex-wrap: wrap;
+}
+
+/* ===== Date Range Picker ===== */
+.dateRangeRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  color: var(--text-tertiary);
+}
+
+.dateRangeIcon {
+  padding: 0 4px 0 6px;
+  display: flex;
+  align-items: center;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+}
+
+.dateInput {
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-void);
+  color: var(--text-secondary);
+  font-size: 0.83rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color-scheme: dark;
+  width: 130px;
+}
+
+.dateInput:hover,
+.dateInput:focus {
+  border-color: var(--accent-glow);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.dateSep {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  padding: 0 2px;
+  flex-shrink: 0;
+}
+
+.clearBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.clearBtn:hover {
+  background: rgba(220, 38, 38, 0.12);
+  color: #DC2626;
+}
+
+.dateRangeDivider {
+  width: 1px;
+  height: 20px;
+  background: var(--border-subtle);
+  flex-shrink: 0;
+  margin: 0 2px;
+}
+
+.refreshIconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.refreshIconBtn:hover {
+  background: var(--accent-dim);
+  color: var(--accent-glow);
+}
+
+.refreshIconBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===== Header Stats (aligned to header right) ===== */
+.headerStats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .statChip {
@@ -151,7 +265,6 @@
 .tabBar {
   display: flex;
   gap: 4px;
-  margin-bottom: 28px;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
@@ -384,6 +497,10 @@
 @media (max-width: 640px) {
   .headerRow { flex-direction: column; }
   .headerRight { align-items: flex-start; }
+  .headerStats { flex-direction: row; align-items: flex-start; }
+  .tabFilterRow { flex-direction: column; align-items: flex-start; }
   .tabBar { width: 100%; }
   .tab { flex: 1; justify-content: center; padding: 10px 12px; }
+  .dateRangeRow { width: 100%; }
+  .dateInput { flex: 1; width: auto; }
 }

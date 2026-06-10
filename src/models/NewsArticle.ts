@@ -8,7 +8,6 @@ export interface INewsArticle extends Document {
   source: string;
   published_at: Date;
   slot: 'morning' | 'evening';
-  is_read: boolean;
   createdAt: Date;
 }
 
@@ -22,10 +21,12 @@ const NewsArticleSchema = new Schema<INewsArticle>(
     published_at: { type: Date, default: Date.now },
     // "morning" = crawled at 6 AM run, "evening" = 6 PM run
     slot: { type: String, enum: ['morning', 'evening'], required: true },
-    is_read: { type: Boolean, default: false },
   },
   { timestamps: true }
 );
+
+// Auto-delete articles older than 7 days
+NewsArticleSchema.index({ published_at: 1 }, { expireAfterSeconds: 7 * 24 * 60 * 60 });
 
 const NewsArticle =
   models.NewsArticle || mongoose.model<INewsArticle>('NewsArticle', NewsArticleSchema);
