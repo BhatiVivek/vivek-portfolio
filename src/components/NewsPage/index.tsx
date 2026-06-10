@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import styles from './NewsPage.module.css';
 
@@ -29,7 +29,16 @@ const TAG_COLORS: Record<string, string> = {
 };
 
 function ArticleCard({ article, onRead }: { article: NewsArticle; onRead: (id: string) => void }) {
+  const [expanded, setExpanded] = useState(false);
+  const [isTruncated, setIsTruncated] = useState(false);
+  const summaryRef = useRef<HTMLParagraphElement>(null);
   const tagColor = TAG_COLORS[article.tag] ?? '#6B7280';
+
+  useEffect(() => {
+    if (expanded) return;
+    const el = summaryRef.current;
+    if (el) setIsTruncated(el.scrollHeight > el.clientHeight);
+  }, [expanded]);
   const publishedAt = new Date(article.published_at);
   const dateStr = publishedAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   const timeStr = publishedAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -50,7 +59,20 @@ function ArticleCard({ article, onRead }: { article: NewsArticle; onRead: (id: s
         <p className={`${styles.articleTitle} ${article.is_read ? styles.articleTitleRead : ''}`}>
           {article.title}
         </p>
-        <p className={styles.articleSummary}>{article.summary}</p>
+        <p
+          ref={summaryRef}
+          className={`${styles.articleSummary} ${expanded ? styles.articleSummaryExpanded : ''}`}
+        >
+          {article.summary}
+        </p>
+        {(isTruncated || expanded) && (
+          <button
+            className={styles.readMoreBtn}
+            onClick={(e) => { e.stopPropagation(); setExpanded((v) => !v); if (!article.is_read) onRead(article._id); }}
+          >
+            {expanded ? 'Read less ↑' : 'Read more ↓'}
+          </button>
+        )}
         <div className={styles.articleFooter}>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
