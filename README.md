@@ -1,36 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vivek Portfolio
+
+Personal portfolio and AI-augmented content hub built with Next.js, Material UI, and MongoDB. Includes an automated news pipeline that crawls RSS feeds, summarizes articles with GPT-4o mini, and publishes a daily AI news brief.
+
+## Live Site
+
+| Page | URL |
+|------|-----|
+| Portfolio | [https://vivekbhati.vercel.app/](https://vivekbhati.vercel.app/) |
+| AI News Brief | [https://vivekbhati.vercel.app/news](https://vivekbhati.vercel.app/news) |
+
+## Features
+
+- **Portfolio** — experience, skills, education, certifications, and contact form
+- **AI News Brief** — RSS crawl → article extraction → GPT-4o mini summarization → MongoDB → `/news` UI
+- **Blog & Videos** — content pages backed by MongoDB
+- **MCP servers** — portfolio data and news crawler exposed via Model Context Protocol (`src/mcp/`)
+- **Scheduled crawls** — Vercel Cron hits `/api/news/crawl` daily (see `vercel.json`)
+
+## Tech Stack
+
+Next.js 16 · React 19 · TypeScript · MUI · MongoDB · OpenAI · MCP SDK · Docker
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create `.env.local`:
 
-## Learn More
+```env
+MONGODB_URI=
+OPENAI_API_KEY=
+CRON_SECRET=          # secures GET /api/news/crawl (Vercel Cron)
+ZOHO_USER=            # contact form (optional)
+ZOHO_PASSWORD=        # contact form (optional)
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+| `npm run cron:now` | Trigger a news crawl locally |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Docker
 
-## Deploy on Vercel
+```bash
+docker compose up --build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Serves the app at [http://localhost:3000](http://localhost:3000).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## What's Next
+
+- **Admin panel for the news pipeline** — re-enable `/admin` and `/admin/news` with real authentication (planned as a separate auth service consumed by this app)
+- **Manage crawl sources** — add, update, and remove RSS feed URLs from the admin UI instead of relying on seeded defaults in MongoDB
+- **Configurable crawl schedule** — move from a single daily run to twice-daily crawls (morning + evening slots); the pipeline already supports `evening` slots — next step is wiring the second Vercel Cron job and exposing schedule controls in admin
+- **Manual crawl triggers** — run a morning or evening crawl on demand from the admin dashboard (UI scaffolded, pending auth)
+
+## Deploy
+
+Deployed on [Vercel](https://vercel.com). Push to the connected branch to trigger a deploy.

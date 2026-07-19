@@ -1,4 +1,6 @@
+// NOTE: This file is not being used anywhere, it is kept here for future use
 // ADMIN FEATURE — temporarily disabled (pending real authentication)
+
 import { NextResponse } from 'next/server';
 
 export async function POST() {

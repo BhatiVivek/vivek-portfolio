@@ -1,3 +1,5 @@
+// NOTE: This file is not being used anywhere, it is kept here for future use
+
 /**
  * news-crawler-server.ts
  *
