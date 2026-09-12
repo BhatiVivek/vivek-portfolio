@@ -293,3 +293,15 @@ Implement only these items first:
 5. Migrate the global classes, navigation, buttons, cards, and hero.
 
 Once these succeed, add the picker and persistence. The remaining themes then become safe configuration additions rather than large refactors.
+
+## Implementation status
+
+The first milestone is implemented in this repository:
+
+- `aqua-editorial`, `midnight-tech`, and `warm-studio` are available in `src/theme/themes.ts`.
+- CSS custom properties and MUI are generated from the same active theme definition.
+- The selected theme is available in the fixed top utility bar and persists in the `portfolio-theme` cookie.
+- The root layout reads that cookie on the server, preventing a flash of the default theme on refresh.
+- Shared global controls plus navigation, hero, awards, and news styling now consume theme tokens.
+
+The next planned increment is to migrate the remaining route-level inline styles and then add the fourth and fifth configurations without changing component code.

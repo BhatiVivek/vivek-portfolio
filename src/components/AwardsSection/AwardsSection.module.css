@@ -1,7 +1,7 @@
 .awardsSection {
   position: relative;
   width: 100%;
-  padding: 100px 0;
+  padding: var(--space-section) 0;
   background-image: url('/images/award.avif');
   background-size: cover;
   background-position: center;
@@ -22,12 +22,12 @@
 }
 
 .awardCard {
-  padding: 24px;
+  padding: var(--space-card-padding);
   display: flex;
   align-items: center;
   gap: 16px;
   border-left: 4px solid var(--accent-glow);
-  background: rgba(255, 255, 255, 0.75) !important;
+  background: var(--bg-surface-raised) !important;
   backdrop-filter: blur(12px);
 }
 
@@ -42,8 +42,8 @@
 .awardIcon {
   width: 44px;
   height: 44px;
-  background: rgba(13, 148, 136, 0.2);
-  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent-glow) 20%, transparent);
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;

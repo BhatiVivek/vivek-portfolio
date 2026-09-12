@@ -4,6 +4,7 @@
  * without importing TypeScript. Keep values in sync with tokens.ts.
  * Token path shown as: /* tokens.<group>.<key> *\/
  */
+/* Fallback values are overridden by the active server-rendered theme. */
 :root {
   /* Backgrounds — tokens.colors.bg* */
   --bg-void:         #F3F4F6;
@@ -47,18 +48,21 @@
 /* Push page content below the fixed TopUtilityBar (38px) */
 body {
   padding-top: 38px;
+  background: var(--bg-void);
+  color: var(--text-primary);
+  font-family: var(--font-body);
 }
 
 /* ===== Reusable Classes ===== */
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 var(--space-container-inline);
 }
 
 .section-spacer {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: var(--space-section);
+  padding-bottom: var(--space-section);
 }
 
 .flex-center {
@@ -87,7 +91,7 @@ body {
   bottom: 0;
   background: radial-gradient(
     600px circle at var(--mouse-x) var(--mouse-y),
-    rgba(14, 165, 233, 0.04),
+    var(--spotlight-glow),
     transparent 40%
   );
   opacity: 0;
@@ -108,7 +112,7 @@ body {
 
 /* ===== Buttons ===== */
 .btn {
-  padding: 14px 28px;
+  padding: var(--space-control-block) var(--space-control-inline);
   border-radius: var(--radius-pill);
   font-weight: 600;
   font-size: 0.95rem;
@@ -124,18 +128,18 @@ body {
 
 .btn-primary {
   background: var(--text-primary);
-  color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: var(--color-on-accent);
+  box-shadow: var(--shadow-accent);
 }
 
 .btn-primary:hover {
-  background: #000000;
+  background: var(--accent-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-float);
 }
 
 .btn-secondary {
-  background: #FFFFFF;
+  background: var(--bg-surface);
   color: var(--text-primary);
   border: 1px solid var(--border-subtle);
   box-shadow: var(--shadow-card);
@@ -150,13 +154,13 @@ body {
 
 .btn-accent {
   background: var(--accent-gradient);
-  color: #FFFFFF;
-  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+  color: var(--color-on-accent);
+  box-shadow: var(--shadow-accent);
 }
 
 .btn-accent:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(13, 148, 136, 0.4);
+  box-shadow: var(--shadow-float);
 }
 
 /* ===== Tech Pills ===== */
@@ -236,7 +240,7 @@ body {
   padding: 16px 20px;
   border-radius: var(--radius-md);
   font-size: 1rem;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-body);
   outline: none;
   transition: all 0.3s ease;
 }
@@ -253,8 +257,8 @@ body {
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
   .section-spacer {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: calc(var(--space-section) * 0.6);
+    padding-bottom: calc(var(--space-section) * 0.6);
   }
 }
 
