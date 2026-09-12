@@ -1,7 +1,10 @@
 import type { ThemeOptions } from '@mui/material/styles';
-import { colors } from './tokens';
+import type { AppTheme } from './contract';
 
-export const components: ThemeOptions['components'] = {
+export function createComponentOverrides(theme: AppTheme): ThemeOptions['components'] {
+  const { color, typography } = theme;
+
+  return {
   MuiCssBaseline: {
     styleOverrides: {
       '*, *::before, *::after': {
@@ -10,19 +13,23 @@ export const components: ThemeOptions['components'] = {
         padding: 0,
       },
       body: {
-        lineHeight: 1.6,
+        backgroundColor: color.page,
+        color: color.textPrimary,
+        fontFamily: typography.bodyFamily,
+        lineHeight: typography.bodyLineHeight,
         WebkitFontSmoothing: 'antialiased',
         MozOsxFontSmoothing: 'grayscale',
         overflowX: 'hidden',
       },
       'h1, h2, h3, h4, h5, h6': {
-        fontWeight: 600,
-        letterSpacing: '-0.02em',
-        color: colors.textPrimary,
+        fontFamily: typography.headingFamily,
+        fontWeight: typography.headingWeight,
+        letterSpacing: typography.headingTracking,
+        color: color.textPrimary,
       },
       p: {
-        color: colors.textSecondary,
-        fontSize: '1.05rem',
+        color: color.textSecondary,
+        fontSize: typography.bodySize,
       },
       a: {
         textDecoration: 'none',
@@ -32,3 +39,4 @@ export const components: ThemeOptions['components'] = {
     },
   },
 };
+}

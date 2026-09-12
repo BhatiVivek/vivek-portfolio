@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import ThemeSwitcher from '@/components/ThemeSwitcher';
 import styles from './TopUtilityBar.module.css';
 
 const NAV_LINKS = [
@@ -33,6 +34,8 @@ export default function TopUtilityBar() {
             );
           })}
         </nav>
+
+        <ThemeSwitcher />
 
         {/* Admin link — disabled until real auth is implemented */}
         {/* <Link href="/admin" className={...}>Admin</Link> */}

@@ -5,10 +5,10 @@
   right: 0;
   z-index: 2000;
   height: 38px;
-  background: rgba(10, 8, 28, 0.82);
+  background: var(--utility-bar);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid color-mix(in srgb, var(--utility-text-hover) 10%, transparent);
 }
 
 .inner {
@@ -35,7 +35,7 @@
   padding: 3px 11px;
   font-size: 0.75rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--utility-text);
   border-radius: 5px;
   transition: color 0.15s, background 0.15s;
   text-decoration: none;
@@ -44,13 +44,13 @@
 }
 
 .link:hover {
-  color: rgba(255, 255, 255, 0.88);
-  background: rgba(255, 255, 255, 0.07);
+  color: var(--utility-text-hover);
+  background: color-mix(in srgb, var(--utility-text-hover) 7%, transparent);
 }
 
 .active {
-  color: rgba(255, 255, 255, 0.95) !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+  color: var(--utility-text-hover) !important;
+  background: var(--utility-active) !important;
 }
 
 /* "AI" badge next to News */
@@ -60,9 +60,9 @@
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  color: #a78bfa;
-  background: rgba(167, 139, 250, 0.15);
-  border: 1px solid rgba(167, 139, 250, 0.3);
+  color: var(--utility-badge);
+  background: var(--utility-badge-background);
+  border: 1px solid var(--utility-badge-border);
   border-radius: 3px;
   line-height: 1.4;
 }
