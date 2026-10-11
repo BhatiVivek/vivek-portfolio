@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import styles from './HeroSection.module.css';
+import ThemePortrait from '@/components/ThemePortrait';
 
 interface HeroSectionProps {
   handleDownloadResume: () => void;
@@ -68,16 +69,18 @@ export default function HeroSection({ handleDownloadResume }: HeroSectionProps) 
 
         {/* Right: Profile Picture */}
         <div className={styles.heroProfileWrapper}>
-          <div className={styles.heroProfileRing}>
-            <div className={styles.heroProfileImageContainer}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/profile.png"
-                alt="Vivek Bhati"
-                className={styles.heroProfileImage}
-              />
+          <ThemePortrait>
+            <div className={styles.heroProfileRing}>
+              <div className={styles.heroProfileImageContainer}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/profile.png"
+                  alt="Vivek Bhati"
+                  className={styles.heroProfileImage}
+                />
+              </div>
             </div>
-          </div>
+          </ThemePortrait>
           <div className={styles.heroProfileDots} aria-hidden="true" />
           <div className={styles.heroProfileBadge}>
             <span>12+</span>

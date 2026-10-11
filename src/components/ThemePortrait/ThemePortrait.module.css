@@ -1,0 +1,28 @@
+.portrait {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.rotor { transform-origin: center; }
+
+.portrait[data-phase='spinning'] .rotor { will-change: transform; }
+
+.sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.spark {
+  position: absolute;
+  top: calc(50% - 6px);
+  left: calc(50% - 6px);
+  width: 12px;
+  height: 12px;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkles { display: none; }
+}
