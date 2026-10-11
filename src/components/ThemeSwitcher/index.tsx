@@ -6,9 +6,10 @@ import { themes, type ThemeId } from '@/theme';
 import styles from './ThemeSwitcher.module.css';
 
 export default function ThemeSwitcher() {
-  const { themeId, setThemeId } = useThemePreference();
+  const { themeId, pendingThemeId, requestThemeChange } = useThemePreference();
   const [isOpen, setIsOpen] = useState(false);
   const pickerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
   const menuId = useId();
   const activeTheme = themes[themeId];
 
@@ -30,26 +31,34 @@ export default function ThemeSwitcher() {
   }, []);
 
   function selectTheme(nextThemeId: ThemeId) {
-    setThemeId(nextThemeId);
     setIsOpen(false);
+    triggerRef.current?.focus();
+    void requestThemeChange(nextThemeId);
   }
 
   return (
     <div ref={pickerRef} className={styles.switcher}>
       <button
+        ref={triggerRef}
         type="button"
         className={styles.trigger}
         aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-controls={menuId}
-        onClick={() => setIsOpen((open) => !open)}
+        aria-label={pendingThemeId ? `Changing to ${themes[pendingThemeId].label}` : `Choose theme. Current theme: ${activeTheme.label}`}
+        aria-disabled={pendingThemeId !== null}
+        aria-busy={pendingThemeId !== null}
+        onClick={() => { if (!pendingThemeId) setIsOpen((open) => !open); }}
       >
         <span className={styles.activeSwatch} style={{ background: activeTheme.color.accentGradient }} aria-hidden="true" />
-        <span className={styles.activeLabel}>{activeTheme.label}</span>
+        <span className={styles.activeLabel}>{pendingThemeId ? 'Changing theme…' : activeTheme.label}</span>
         <svg className={styles.chevron} viewBox="0 0 16 16" aria-hidden="true">
           <path d="m4 6 4 4 4-4" />
         </svg>
       </button>
+      <span className={styles.status} role="status">
+        {pendingThemeId ? `Changing to ${themes[pendingThemeId].label}` : `${activeTheme.label} theme selected`}
+      </span>
 
       {isOpen && (
         <div id={menuId} className={styles.menu} role="menu" aria-label="Choose a site theme">

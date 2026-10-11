@@ -2,6 +2,30 @@
 
 This document shows where a theme starts and how a visitor’s selection changes the portfolio.
 
+## Animated selection (home portrait)
+
+The picker now calls `requestThemeChange()` in `providers.tsx`. It holds the
+selection in `pendingThemeId` and prevents overlapping requests. `ThemePortrait`
+registers the home-page animation with the provider:
+
+1. Keep the existing theme active and spin the portrait clockwise for 1.6 seconds,
+   shrinking to 55% as it accelerates, then growing back to full size and stopping
+   upright after six turns. Scaling does not change the surrounding page layout.
+2. Burst 40 decorative sparkles with varied sizes and travel distances in the incoming theme's colors for about 310ms. Adjust `SPARKLE_COUNT`, `SPIN_DURATION_MS`, and `SPARKLE_DURATION_MS` in `ThemePortrait/index.tsx` to tune the effect.
+3. Call the existing `setThemeId()` to update React/MUI, CSS variables, and the cookie.
+4. Clear the pending selection and leave the portrait stable (floating stops).
+
+The full sequence takes about 1.9 seconds, with no added delay before applying the theme.
+
+Animation completion drives the sequence. Selecting the current theme does nothing.
+If the portrait is absent or outside the viewport, or reduced motion is enabled,
+the theme applies immediately. Navigation, hidden tabs, animation failure, and a
+4-second safety timeout cancel the effect and finish the pending theme change.
+The server-rendered initial theme does not animate.
+
+The diagram below describes the underlying theme application and persistence flow;
+the animated selection above now happens before its client application step.
+
 ```text
 1. Theme source of truth
    src/theme/themes.ts
