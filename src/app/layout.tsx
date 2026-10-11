@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import { Providers } from "./providers";
 import { Inter } from "next/font/google";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter';
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import TopUtilityBar from "@/components/TopUtilityBar";
 import { defaultThemeId, getTheme, getThemeVariables, isThemeId } from '@/theme';
@@ -38,6 +39,7 @@ export default async function RootLayout({
             {children}
           </Providers>
         </AppRouterCacheProvider>
+        <Analytics />
       </body>
     </html>
   );
