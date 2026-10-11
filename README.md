@@ -70,3 +70,9 @@ Serves the app at [http://localhost:3000](http://localhost:3000).
 ## Deploy
 
 Deployed on [Vercel](https://vercel.com). Push to the connected branch to trigger a deploy.
+
+## Web Analytics
+
+Vercel Web Analytics is integrated in the root layout to track page views across the app. Enable **Analytics** in the Vercel project dashboard before deploying this change, then visit the deployed site and check the dashboard for data.
+
+See the [Vercel Analytics learning guide](docs/VERCEL_ANALYTICS.md) for the integration walkthrough, dashboard usage, verification, troubleshooting, and optional custom events.

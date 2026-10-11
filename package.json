@@ -17,6 +17,7 @@
     "@mui/icons-material": "^7.3.7",
     "@mui/material": "^7.3.7",
     "@mui/material-nextjs": "^7.3.7",
+    "@vercel/analytics": "^2.0.1",
     "axios": "^1.16.1",
     "cheerio": "^1.2.0",
     "dotenv": "^17.4.2",
